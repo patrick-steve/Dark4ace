@@ -1,0 +1,90 @@
+/*
+ * hud_minibot.h
+ *
+ *  Created on: Aug 10, 2025
+ *      Author: gskan
+ */
+
+#ifndef ROBOT_CONFIG_HUD_MINIBOT_H_
+#define ROBOT_CONFIG_HUD_MINIBOT_H_
+
+#include "hud_constants.h"
+
+// GRAPHICS SELECTION
+// Comment out any unwanted graphics
+#define HUD
+#define SPINSPIN
+//#define GEARING
+//#define SUPERCAP // Either supercap or aimbot (they use the same space to draw)
+//#define AIMBOT
+#define CROSSHAIR
+#define CROSSHAIR_TWO_COLOUR
+#define PITCH_ANG
+#define FEEDER_STATE
+#define MOTOR_FAULT
+
+//in pixels
+#define CUSTOM_CROSSHAIR
+//assuming 1920x1080 screen
+#define CROSSHAIR_LEFT_OFFSET	-10
+#define CROSSHAIR_UP_OFFSET		-40
+#define CROSSHAIR_THICKNESS	2
+#define CROSSHAIR_COLOUR	GRAPHIC_COLOUR_BLACK
+#define CROSSHAIR_LENGTH_X	30
+#define CROSSHAIR_CENTER_X	(960 + CROSSHAIR_LEFT_OFFSET)
+#define CROSSHAIR_CENTER_Y	(540 + CROSSHAIR_UP_OFFSET)
+#define CROSSHAIR_LENGTH_Y CROSSHAIR_LENGTH_X
+#define CROSSHAIR_START_X	(CROSSHAIR_CENTER_X - (CROSSHAIR_LENGTH_X/2))
+#define CROSSHAIR_END_X		(CROSSHAIR_START_X + CROSSHAIR_LENGTH_X)
+#define CROSSHAIR_START_Y	(CROSSHAIR_CENTER_Y - (CROSSHAIR_LENGTH_Y/2))
+#define CROSSHAIR_END_Y		(CROSSHAIR_START_Y + CROSSHAIR_LENGTH_Y)
+
+#define CROSSHAIR_TWO_COLOUR
+
+#define CROSSHAIR_SHADOW_THICKNESS		4
+#define CROSSHAIR_SHADOW_COLOUR	GRAPHIC_COLOUR_WHITE
+#define CROSSHAIR_DOT_COLOUR	GRAPHIC_COLOUR_OWN_COLOR
+#define CROSSHAIR_DOT_WIDTH		3
+
+// CHARACTER PARAMETERS
+#define FONT_SIZE			20
+#define FONT_SIZE_SMALL		10
+#define CHAR_X_OFFSET		8 // Offset depending on char len to center text
+#define CHAR_Y_OFFSET		10 // Y offset (depends on font size)
+#define CHAR_WIDTH			5
+#define CHAR_WIDTH_SMALL	3
+// SPINSPIN PARAMETERS
+// Gap shows direction chassis is facing relative to gimbal
+#define BORDER_GAP_SIZE 	20
+
+// RADIAL HUD PARAMETERS
+// Radius of the radial HUD
+#define RADIAL_DIAMETER  	350
+// Angle from horizontal line
+#define ANGLE_LIMIT		 	40
+
+// TOP GRAPHICS PARAMETERS
+// Space between the graphics at top
+#define TOP_GAP			 	200
+#define TOP_Y_POS		 	800
+
+// PITCH ANGLE PARAMETERS
+#define MAJOR_TICK_WIDTH	4
+#define MAJOR_TICK_LENGTH	30
+#define MINOR_TICK_WIDTH	2
+#define MINOR_TICK_LENGTH	20
+#define TICK_COLOUR			GRAPHIC_COLOUR_WHITE
+#define TICK_INTERVALS		10
+
+#define PITCH_BOUNDARY_COLOUR	GRAPHIC_COLOUR_PURPLISH_RED
+#define PITCH_BOUNDARY_WIDTH	6
+#define PITCH_LABEL_DIST		25
+
+#define PITCH_ANG_COLOUR	GRAPHIC_COLOUR_GREEN
+#define PITCH_ANG_WIDTH		6
+#define REF_DELAY			150
+
+#define MOTOR_FAULT_START 	750
+#define MOTOR_FAULT_GAP		50
+
+#endif /* ROBOT_CONFIG_HUD_MINIBOT_H_ */
