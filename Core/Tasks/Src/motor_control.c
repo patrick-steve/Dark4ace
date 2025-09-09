@@ -101,7 +101,8 @@ void speed_pid(double setpoint, double curr_pt, pid_data_t *pid) {
 	pid->error[0] = diff;
 
 	pid->integral += diff*time_diff;
-
+	float_minmax(pid->integral, pid->int_max, 0);
+	
 	float rpm_pout = pid->kp * diff;
 	float rpm_iout = pid->integral*pid->ki;
 	float rpm_dout = pid->kd * (pid->error[0]-pid->error[1]);
