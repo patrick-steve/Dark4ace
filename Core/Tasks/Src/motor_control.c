@@ -91,6 +91,24 @@ void angle_pid(double setpoint, double curr_pt, motor_data_t *motor) {
  */
 void speed_pid(double setpoint, double curr_pt, pid_data_t *pid) {
 	// todo: 1. Implement pid
+	double diff = setpoint - curr_pt;
+	pid->last_time[1] = pid->last_time[0];
+	pid->last_time[0] = get_microseconds();
+
+	uint32_t time_diff = (pid->last_time[0] - pid->last_time[1])*10e-6;
+
+	pid->error[1] = pid->error[0];
+	pid->error[0] = diff;
+
+	pid->integral += diff*time_diff;
+
+	float rpm_pout = pid->kp * diff;
+	float rpm_iout = pid->integral*pid->ki;
+	float rpm_dout = pid->kd * (pid->error[0]-pid->error[1]);
+
+	float final = rpm_pout + rpm_iout + rpm_dout;
+	pid->output = final;
+
 }
 
 void kill_can() {
