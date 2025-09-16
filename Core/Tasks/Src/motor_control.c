@@ -56,7 +56,7 @@ void yangle_pid(double setpoint, double curr_pt, motor_data_t *motor, float imu_
 
 	motor->angle_pid.integral += motor->angle_pid.error[0]  * motor->angle_pid.ki;
 	float_minmax(&motor->angle_pid.integral, motor->angle_pid.int_max, 0);
-	float rpm_iOut = motor->angle_pid.ki;
+	float rpm_iOut = motor->angle_pid.integral;
 
 	motor->angle_pid.output = rpm_pOut + rpm_dOut + rpm_iOut;
 	float_minmax(&motor->angle_pid.output, motor->angle_pid.max_out,0);
