@@ -69,7 +69,13 @@ void keyboard_chassis_input() {
 			}
 
 			// todo: 5. Spinspin logic, make the chassis spin!
-
+			if (g_spinspin_mode && curr_spinspin == 0){
+				yaw_input = 1;
+				curr_spinspin = 1;
+			}else{
+				yaw_input = 0;
+				curr_spinspin = 0;
+			}
 			chassis_set_ctrl(forward_input, horizontal_input, yaw_input);
 		}
 	}
@@ -79,7 +85,7 @@ void mouse_gimbal_input() {
 	if (g_safety_toggle || g_remote_cmd.right_switch == ge_RSW_SHUTDOWN) {
 		gimbal_ctrl_data.enabled = 0;
 	} else {
-		gimbal_ctrl_data.enabled = 1;
+		gimbal_ctrl_data.enabled = 1;  
 //		float pitch_mouse = (float) g_remote_cmd.mouse_y * MOUSE_Y_INVERT
 //				* PITCH_INVERT * MOUSE_Y_SENSITIVITY / 32768;
 //		float yaw_mouse = (float) g_remote_cmd.mouse_x * MOUSE_X_INVERT
