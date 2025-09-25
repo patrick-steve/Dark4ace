@@ -76,7 +76,6 @@ void yangle_pid(double setpoint, double curr_pt, motor_data_t *motor, float imu_
  */
 void angle_pid(double setpoint, double curr_pt, motor_data_t *motor) {
 	// todo: 2. Implement pid
-<<<<<<< Updated upstream
 	float ang_diff = (setpoint - curr_pt);
 
 	motor->angle_pid.last_time[1] = motor->angle_pid.last_time[0];
@@ -100,9 +99,6 @@ void angle_pid(double setpoint, double curr_pt, motor_data_t *motor) {
 	float_minmax(&motor->angle_pid.output, motor->angle_pid.max_out, -motor->angle_pid.max_out);
 
 	speed_pid(motor->angle_pid.output, motor->raw_data.rpm, &motor->rpm_pid);	
-=======
-	double error = 
->>>>>>> Stashed changes
 }
 
 

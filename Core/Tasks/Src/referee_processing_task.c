@@ -46,6 +46,9 @@ ref_magazine_data_t ref_mag_data;
 uint32_t ref_mag_data_txno = 0;
 uint8_t g_ref_tx_seq = 0;
 
+ref_game_event_data_t ref_game_event;
+uint32_t ref_game_event_txno = 0;
+
 uint8_t ref_buffer[2];
 queue_t referee_uart_q;
 
@@ -115,6 +118,11 @@ void referee_processing_task(void *argument) {
 						ref_mag_data_txno++;
 						break;
 					// add your code here !!
+					case REF_GAME_EVENT_CMD_ID:
+						memcpy(&ref_game_event, &g_ref_msg_buffer.data,
+							sizeof(ref_game_event_data_t));
+						ref_game_event_txno++;
+						break;
 					default:
 						break;
 					/* todo: 6. Get data from the referee system

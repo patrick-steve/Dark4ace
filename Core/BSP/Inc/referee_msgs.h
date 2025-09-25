@@ -298,7 +298,7 @@ typedef struct __packed
     uint8_t data4;
 } ref_custom_data_t;
 
-//find the cmd id
+//find the cmd id (0x0101)
 typedef struct __packed
 {
     uint8_t data[64];
