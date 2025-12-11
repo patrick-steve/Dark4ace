@@ -202,20 +202,20 @@
 #define BR_MOTOR_ID 			16
 #define BR_MOTOR_CAN_PTR		&hcan2
 #endif
-#define FEEDER_MOTOR_ID			7
+#define FEEDER_MOTOR_ID			12
 #define FEEDER_MOTOR_CAN_PTR	&hcan1
-#define LFRICTION_MOTOR_ID		6
+#define LFRICTION_MOTOR_ID		2 // either 2 / 3
 #define LFRICTION_MOTOR_CAN_PTR	&hcan1
-#define RFRICTION_MOTOR_ID		5
+#define RFRICTION_MOTOR_ID		3 // either 3 / 2
 #define RFRICTION_MOTOR_CAN_PTR	&hcan1
 
 //NOTE: two motors CANNOT have the same __flashing__ number (i.e. GM6020 id 9 cannot be used
 //with any id 6 motors
-#define PITCH_MOTOR_ID 			8
-#define PITCH_MOTOR_CAN_PTR		&hcan1
+#define PITCH_MOTOR_ID 			22
+#define PITCH_MOTOR_CAN_PTR		&hcan2
 #ifndef CHASSIS_MCU
-#define YAW_MOTOR_ID 			20
-#define YAW_MOTOR_CAN_PTR		&hcan2
+#define YAW_MOTOR_ID 			11
+#define YAW_MOTOR_CAN_PTR		&hcan1
 #endif
 
 /* MECANUM WHEEL PROPERTIES */
