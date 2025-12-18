@@ -92,8 +92,9 @@ void gimbal_control_task(void *argument) {
  * Need to check if having ID4 (i.e. 0x208) + having the launcher motors (ID 1-3, 0x201 to 0x203)
  * still provides a fast enough response
  */
+uint8_t pit_lim;
 void gimbal_control(motor_data_t *pitch_motor, motor_data_t *yaw_motor) {
-	uint8_t pit_lim = 0;
+	pit_lim = 0;
 	uint8_t yaw_lim = 0;
 	if (prev_yaw == imu_heading.yaw || prev_pit == imu_heading.pit) {
 		return;}
@@ -172,6 +173,7 @@ void gimbal_control(motor_data_t *pitch_motor, motor_data_t *yaw_motor) {
 
 }
 
+int test = 0;
 void gimbal_angle_control(motor_data_t *pitch_motor, motor_data_t *yaw_motor) {
 
 	if (gimbal_ctrl_data.pitch > pitch_motor->angle_data.max_ang) {
@@ -193,4 +195,5 @@ void gimbal_angle_control(motor_data_t *pitch_motor, motor_data_t *yaw_motor) {
 
 	pitch_motor->output = pitch_motor->rpm_pid.output;
 	yaw_motor->output = yaw_motor->rpm_pid.output;
+	test = 1;
 }

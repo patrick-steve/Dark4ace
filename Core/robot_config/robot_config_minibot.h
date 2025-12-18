@@ -153,16 +153,16 @@
  * the motors
  */
 /*********************** GIMBAL CONFIGURATION ***********************/
-#define PITCH_ANGLE_KP	  		0
-#define PITCH_ANGLE_KI  		0
+#define PITCH_ANGLE_KP	  		0.05
+#define PITCH_ANGLE_KI  		0.01
 #define PITCH_ANGLE_KD  		0
 #define PITCH_ANGLE_INT_MAX		0.1
 #define PITCH_MAX_RPM			60
 
-#define PITCHRPM_KP				0
-#define PITCHRPM_KI				0
+#define PITCHRPM_KP				1
+#define PITCHRPM_KI				1
 #define PITCHRPM_KD				0
-#define PITCHRPM_INT_MAX		10
+#define PITCHRPM_INT_MAX		50
 #define PITCH_MAX_CURRENT		20000
 
 #define PITCH_MOTOR_TYPE		TYPE_GM6020
@@ -171,20 +171,20 @@
 #define PITCH_MIN_ANG			-0.50
 #define PITCH_CONST 			0
 
-#define YAW_ANGLE_KP			0
-#define YAW_ANGLE_KI			0
+#define YAW_ANGLE_KP			0.1
+#define YAW_ANGLE_KI			0.1
 #define YAW_ANGLE_KD			0
-#define YAW_ANGLE_INT_MAX		0.05
+#define YAW_ANGLE_INT_MAX		0.5
 #define YAW_MAX_RPM				85
 #define YAW_SPINSPIN_CONSTANT	5000
 
-#define YAWRPM_KP				0
-#define YAWRPM_KI				0
-#define YAWRPM_KD				0
+#define YAWRPM_KP				1000
+#define YAWRPM_KI				10
+#define YAWRPM_KD				15
 #define YAWRPM_INT_MAX			200
 #define YAW_MAX_CURRENT			20000
 
-#define YAW_CENTER 				0
+#define YAW_CENTER 				-2.5
 #define YAW_MAX_ANG				5*PI
 #define YAW_MIN_ANG				5*-PI
 
@@ -202,23 +202,43 @@
 #define BR_MOTOR_ID 			16
 #define BR_MOTOR_CAN_PTR		&hcan2
 #endif
-#define FEEDER_MOTOR_ID			12
+#define FEEDER_MOTOR_ID			3 // set to 3 on the esc
 #define FEEDER_MOTOR_CAN_PTR	&hcan1
-#define LFRICTION_MOTOR_ID		2 // either 2 / 3
+#define LFRICTION_MOTOR_ID		1 // either 2 / 3
 #define LFRICTION_MOTOR_CAN_PTR	&hcan1
-#define RFRICTION_MOTOR_ID		3 // either 3 / 2
+#define RFRICTION_MOTOR_ID		2 // either 3 / 2
 #define RFRICTION_MOTOR_CAN_PTR	&hcan1
 
 //NOTE: two motors CANNOT have the same __flashing__ number (i.e. GM6020 id 9 cannot be used
 //with any id 6 motors
-#define PITCH_MOTOR_ID 			22
-#define PITCH_MOTOR_CAN_PTR		&hcan2
+#define PITCH_MOTOR_ID 			10 // blinking 6
+#define PITCH_MOTOR_CAN_PTR		&hcan1
 #ifndef CHASSIS_MCU
-#define YAW_MOTOR_ID 			11
-#define YAW_MOTOR_CAN_PTR		&hcan1
+#define YAW_MOTOR_ID 			23 // blinking 7
+#define YAW_MOTOR_CAN_PTR		&hcan2
+
 #endif
 
-/* MECANUM WHEEL PROPERTIES */
+// /* MECANUM WHEEL PROPERTIES */
+// #define WHEEL_CIRC			7.625	//in CM
+
+// #define FR_VX_MULT			-1		//-cos(FR_ANG_Y - FR_ANG_PASSIVE)/sin(FR_ANG_PASSIVE)
+// #define FR_VY_MULT			-1		//-sin(FR_ANG_Y - FR_ANG_PASSIVE)/sin(FR_ANG_PASSIVE)
+// #define FR_YAW_MULT			1		//((-FR_DIST * sin(FR_ANG_Y - FR_ANG_PASSIVE - FR_ANG_X)) / (sin(FR_ANG_PASSIVE) * WHEEL_CIRC))
+
+// #define FL_VX_MULT			-1 		//-cos(FL_ANG_Y - FL_ANG_PASSIVE)/sin(FL_ANG_PASSIVE)
+// #define FL_VY_MULT			1		//-sin(FL_ANG_Y - FL_ANG_PASSIVE)/sin(FL_ANG_PASSIVE)
+// #define FL_YAW_MULT			1		//((-FL_DIST * sin(FL_ANG_Y - FL_ANG_PASSIVE - FL_ANG_X)) / (sin(FL_ANG_PASSIVE) * WHEEL_CIRC))
+
+// #define BL_VX_MULT			1		//-cos(BL_ANG_Y - BL_ANG_PASSIVE)/sin(BL_ANG_PASSIVE)
+// #define BL_VY_MULT			1		//-sin(BL_ANG_Y - BL_ANG_PASSIVE)/sin(BL_ANG_PASSIVE)
+// #define BL_YAW_MULT			1		//((-BL_DIST * sin(BL_ANG_Y - BL_ANG_PASSIVE - BL_ANG_X)) / (sin(BL_ANG_PASSIVE) * WHEEL_CIRC))
+
+// #define BR_VX_MULT			1		//-cos(BR_ANG_Y - BR_ANG_PASSIVE)/sin(BR_ANG_PASSIVE)
+// #define BR_VY_MULT			-1		//-sin(BR_ANG_Y - BR_ANG_PASSIVE)/sin(BR_ANG_PASSIVE)
+// #define BR_YAW_MULT			1		//((-BR_DIST * sin(BR_ANG_Y - BR_ANG_PASSIVE - BR_ANG_X)) / (sin(BR_ANG_PASSIVE) * WHEEL_CIRC))
+
+/* edited wheel constants */
 #define WHEEL_CIRC			7.625	//in CM
 
 #define FR_VX_MULT			-1		//-cos(FR_ANG_Y - FR_ANG_PASSIVE)/sin(FR_ANG_PASSIVE)

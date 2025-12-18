@@ -8,6 +8,7 @@
 #include "board_lib.h"
 #include "motor_control.h"
 #include "robot_config.h"
+double ang_diff;
 
 /* Function for angle PID (i.e. aiming for a target angle rather than RPM)
  * Function calculates target RPM, then calls the speed PID
@@ -22,7 +23,7 @@
 
 void yangle_pid(double setpoint, double curr_pt, motor_data_t *motor, float imu_data, float *prev_imu_data, uint8_t loopback) {
 
-	double ang_diff = (setpoint - curr_pt);
+	ang_diff = (setpoint - curr_pt);
 	if (loopback){
 		if (ang_diff > PI) {
 			ang_diff -= 2 * PI;
