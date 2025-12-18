@@ -166,25 +166,25 @@
 #define PITCH_MAX_CURRENT		20000
 
 #define PITCH_MOTOR_TYPE		TYPE_GM6020
-#define PITCH_CENTER			2071
+#define PITCH_CENTER			2071 // need to look at raw_data real_angle
 #define PITCH_MAX_ANG			0.50
 #define PITCH_MIN_ANG			-0.50
 #define PITCH_CONST 			0
 
-#define YAW_ANGLE_KP			0.1
-#define YAW_ANGLE_KI			0.1
-#define YAW_ANGLE_KD			0
+#define YAW_ANGLE_KP			0.08 //senior say minimum 2 digits try 10 
+#define YAW_ANGLE_KI			0
+#define YAW_ANGLE_KD			0 // if still jittering then add kd
 #define YAW_ANGLE_INT_MAX		0.5
 #define YAW_MAX_RPM				85
 #define YAW_SPINSPIN_CONSTANT	5000
 
-#define YAWRPM_KP				1000
-#define YAWRPM_KI				10
-#define YAWRPM_KD				15
+#define YAWRPM_KP				250 // senior say try 70 
+#define YAWRPM_KI				0
+#define YAWRPM_KD				0 // if still jittering then add kd
 #define YAWRPM_INT_MAX			200
 #define YAW_MAX_CURRENT			20000
 
-#define YAW_CENTER 				-2.5
+#define YAW_CENTER 				0 // need to look at raw_data real_angle
 #define YAW_MAX_ANG				5*PI
 #define YAW_MIN_ANG				5*-PI
 
@@ -219,7 +219,7 @@
 
 #endif
 
-// /* MECANUM WHEEL PROPERTIES */
+// /* MECANUM WHEEL PROPERTIES !! original !!*/
 // #define WHEEL_CIRC			7.625	//in CM
 
 // #define FR_VX_MULT			-1		//-cos(FR_ANG_Y - FR_ANG_PASSIVE)/sin(FR_ANG_PASSIVE)
@@ -243,11 +243,11 @@
 
 #define FR_VX_MULT			-1		//-cos(FR_ANG_Y - FR_ANG_PASSIVE)/sin(FR_ANG_PASSIVE)
 #define FR_VY_MULT			-1		//-sin(FR_ANG_Y - FR_ANG_PASSIVE)/sin(FR_ANG_PASSIVE)
-#define FR_YAW_MULT			1		//((-FR_DIST * sin(FR_ANG_Y - FR_ANG_PASSIVE - FR_ANG_X)) / (sin(FR_ANG_PASSIVE) * WHEEL_CIRC))
+#define FR_YAW_MULT			-1		//((-FR_DIST * sin(FR_ANG_Y - FR_ANG_PASSIVE - FR_ANG_X)) / (sin(FR_ANG_PASSIVE) * WHEEL_CIRC))
 
 #define FL_VX_MULT			-1 		//-cos(FL_ANG_Y - FL_ANG_PASSIVE)/sin(FL_ANG_PASSIVE)
 #define FL_VY_MULT			1		//-sin(FL_ANG_Y - FL_ANG_PASSIVE)/sin(FL_ANG_PASSIVE)
-#define FL_YAW_MULT			1		//((-FL_DIST * sin(FL_ANG_Y - FL_ANG_PASSIVE - FL_ANG_X)) / (sin(FL_ANG_PASSIVE) * WHEEL_CIRC))
+#define FL_YAW_MULT			-1		//((-FL_DIST * sin(FL_ANG_Y - FL_ANG_PASSIVE - FL_ANG_X)) / (sin(FL_ANG_PASSIVE) * WHEEL_CIRC))
 
 #define BL_VX_MULT			1		//-cos(BL_ANG_Y - BL_ANG_PASSIVE)/sin(BL_ANG_PASSIVE)
 #define BL_VY_MULT			1		//-sin(BL_ANG_Y - BL_ANG_PASSIVE)/sin(BL_ANG_PASSIVE)
